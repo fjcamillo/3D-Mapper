@@ -96,7 +96,9 @@ void scan() {
     message.concat(distance);                                   //Concat the distance gathered to variable message
     color = "Color: Red";
     Serial.println(message);
+    delay(serialDelay);
     Serial.println(color);
+    delay(serialDelay);
     lcd.clear();
     lcd.print(message);
     beep(50);                                                   // Length of tone
@@ -107,7 +109,9 @@ void scan() {
     message.concat(distance);                                   // Yellow alert: Obstacle Approaching
     color = "Color: Yellow";
     Serial.println(message);                                    // Send to Android for text to speech
+    delay(serialDelay);
     Serial.println(color);
+    delay(serialDelay);
     lcd.clear();
     lcd.print(message);
     beep(50);
@@ -118,7 +122,9 @@ void scan() {
     message.concat(distance);
     color = "Color: Green";
     Serial.println(message);        // Send to Android for text to speech
+    delay(serialDelay);
     erial.println(color);
+    delay(serialDelay);
     lcd.clear();
     lcd.print(message);
     beep(50);
@@ -162,8 +168,9 @@ void xpositionmove(){
   actualXAngle = "Actual X Angle is: ";
   actualXAngle.concat(xPositionServo.read());
   Serial.println(message);
+  delay(serialDelay);
   Serial.println(actualXAngle);
-  delay(1500);
+  delay(500);
 }
 
 void zerooutservos(){
