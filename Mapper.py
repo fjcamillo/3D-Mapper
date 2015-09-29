@@ -11,18 +11,15 @@ checkDistance = "Distance:"
 checkColor = "Color:"
 checkYAngle = "YAngle:"
 checkXAngle = "XAngle"
+global Output1		#X Angle
+global Output2		#YAngle
+
+#c4d.CallCommand(200000067)  Command for duplicate
+# c4d.CallCommand(5140) Command to create Null
 
 
-def expressoEditor():
-	global Output1
-	Output1 = Input1 + Input2
-
-
-
-
-
-def setPointOfOrigin:
-	c4d.CallComman(5140) #setups Null
+def setDistanceNull():
+	c4d.CallCommand(5140) #setups Null
 
 def main():
 	 stringFromSerial = arduino.readline()

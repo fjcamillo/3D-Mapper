@@ -21,7 +21,6 @@
 //LCD Variable Declaration
 LiquidCrystal lcd(7,6,2,3,4,5);
 String message;
-String color;
 
 //Servo Motor Declarations
 int ypos;
@@ -65,6 +64,7 @@ void setup() {
  */
  
 void loop(){
+  zerooutservos();
   ypositionmove();
 }
 
@@ -94,10 +94,7 @@ void scan() {
   if (distance < 70) {                    
     message = "Distance";                                  //Instantiate the "Distance: "  to the variable message
     message.concat(distance);                                   //Concat the distance gathered to variable message
-    color = "Color: Red";
     Serial.println(message);
-    delay(serialDelay);
-    Serial.println(color);
     delay(serialDelay);
     lcd.clear();
     lcd.print(message);
@@ -107,10 +104,7 @@ void scan() {
   else if (distance >= 70 && distance < 120) {
     message ="Distance: ";
     message.concat(distance);                                   // Yellow alert: Obstacle Approaching
-    color = "Color: Yellow";
     Serial.println(message);                                    // Send to Android for text to speech
-    delay(serialDelay);
-    Serial.println(color);
     delay(serialDelay);
     lcd.clear();
     lcd.print(message);
@@ -122,8 +116,6 @@ void scan() {
     message.concat(distance);
     color = "Color: Green";
     Serial.println(message);        // Send to Android for text to speech
-    delay(serialDelay);
-    erial.println(color);
     delay(serialDelay);
     lcd.clear();
     lcd.print(message);
@@ -144,9 +136,6 @@ void ypositionmove(){
       //sets the position of the servo
       yPositionServo.write(ypos);
 
-      //initiate the scan function
-      scan();
-
       //
       message = "YAngle: ";
       message.concat(ypos);
@@ -154,6 +143,8 @@ void ypositionmove(){
       actualYAngle.concat(yPositionServo.read());
       Serial.println(message);
       delay(serialDelay);
+      //initiate the scan function
+      scan();
       Serial.println(actualYAngle);
       delay(100);
     }
@@ -162,11 +153,10 @@ void ypositionmove(){
     }
 }
 void xpositionmove(){
+  xpos++;
   xPositionServo.write(xpos);
   message = "XAngle: "; 
   message.concat(xpos);
-  actualXAngle = "Actual X Angle is: ";
-  actualXAngle.concat(xPositionServo.read());
   Serial.println(message);
   delay(serialDelay);
   Serial.println(actualXAngle);
