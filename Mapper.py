@@ -1,5 +1,5 @@
-#import c4d
-#from c4d import gui
+import c4d
+from c4d import gui
 import serial
 
 #Welcome to the world of Python
@@ -11,6 +11,18 @@ checkDistance = "Distance:"
 checkColor = "Color:"
 checkYAngle = "YAngle:"
 checkXAngle = "XAngle"
+
+
+def expressoEditor():
+	global Output1
+	Output1 = Input1 + Input2
+
+
+
+
+
+def setPointOfOrigin:
+	c4d.CallComman(5140) #setups Null
 
 def main():
 	 stringFromSerial = arduino.readline()
