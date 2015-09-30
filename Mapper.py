@@ -19,7 +19,7 @@ global Output2		#YAngle
 
 
 def setDistanceNull():
-	c4d.CallCommand(5140) #setups Null
+	DistanceNull = c4d.BaseObject(5140)
 
 def main():
 	 stringFromSerial = arduino.readline()
