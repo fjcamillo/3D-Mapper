@@ -114,7 +114,6 @@ void scan() {
   else if (distance >= 75 || distance == 0){    
     message = "Distance: ";
     message.concat(distance);
-    color = "Color: Green";
     Serial.println(message);        // Send to Android for text to speech
     delay(serialDelay);
     lcd.clear();
