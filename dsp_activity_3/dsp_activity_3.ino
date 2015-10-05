@@ -32,7 +32,7 @@ Servo xPositionServo;
 
 //Serial Declarations
 String response;
-int serialDelay = 1000;
+int serialDelay = 1500;
 
 /*
  * The setup function for arduino components
@@ -92,7 +92,7 @@ void scan() {
   
 
   if (distance < 70) {                    
-    message = "Distance";                                  //Instantiate the "Distance: "  to the variable message
+    message = "Distance: ";                                  //Instantiate the "Distance: "  to the variable message
     message.concat(distance);                                   //Concat the distance gathered to variable message
     Serial.println(message);
     delay(serialDelay);
@@ -131,11 +131,11 @@ void beep(unsigned char delayms){
 }
 
 void ypositionmove(){
-  for (ypos = 0; ypos<=180; ypos+=1){
+  for (ypos = 0; ypos<=180; ypos+=5){
       //sets the position of the servo
       yPositionServo.write(ypos);
 
-      //
+      
       message = "YAngle: ";
       message.concat(ypos);
       actualYAngle = "Actual Angles is: ";
@@ -144,21 +144,22 @@ void ypositionmove(){
       delay(serialDelay);
       //initiate the scan function
       scan();
-      Serial.println(actualYAngle);
+      //Serial.println(actualYAngle);
       delay(100);
-    }
-    if (ypos == 181){
+      if (ypos == 180){
       xpositionmove();
+      }
     }
+    
 }
 void xpositionmove(){
-  xpos++;
+  xpos += 5;
   xPositionServo.write(xpos);
   message = "XAngle: "; 
   message.concat(xpos);
   Serial.println(message);
   delay(serialDelay);
-  Serial.println(actualXAngle);
+  //Serial.println(actualXAngle);
   delay(500);
 }
 
