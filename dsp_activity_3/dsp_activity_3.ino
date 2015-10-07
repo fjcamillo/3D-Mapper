@@ -146,8 +146,9 @@ void ypositionmove(){
       scan();
       //Serial.println(actualYAngle);
       delay(100);
-      if (ypos == 180){
-      xpositionmove();
+      if (ypos == 170){
+        xpositionmove();
+        Serial.end();
       }
     }
     
@@ -167,4 +168,6 @@ void zerooutservos(){
   yPositionServo.write(0);
   xPositionServo.write(0);  
 }
+
+
 

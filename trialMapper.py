@@ -23,9 +23,9 @@ def mainProcess():
 
 
 def secondProcess():
-    while rotationOnZAxis != 180 and rotationOnXAxis != 180:
+    while rotationOnXAxis < 90 and rotationOnXAxis < 2 :
     	readArduinoSerial()
-        angleConditions(rotationOnZAxis, rotationOnXAxis)
+        angleConditions()
     	createNullObjectNextNull()
 
 def debuggerThingy():
@@ -50,7 +50,7 @@ def readArduinoSerial():
 	else:
 		pass
 
-def angleConditions(rotationOnZAxis,rotationOnXAxis):
+def angleConditions():
 	if rotationOnXAxis == 0:
 		if rotationOnZAxis > 90:
 			rotationOnZAxis = 180 - rotationOnZAxis
@@ -65,13 +65,13 @@ def angleConditions(rotationOnZAxis,rotationOnXAxis):
 			coordinateForXAngleLessThanOrEquals_89(distance, rotationOnZAxis, rotationOnXAxis)
 	elif rotationOnXAxis == 90:
 		if rotationOnZAxis > 90:
-			rotationOnZAxis = 180 - rotationOnZAxis
+			rotationOnZAxis = 180 - rotationOnZAxis 
 			coordinateForXAngleEquals_90(distance, rotationOnZAxis)
 		else:
 			coordinateForXAngleEquals_90(distance, rotationOnZAxis)
 	elif rotationOnXAxis <= 179 and rotationOnXAxis >90:
-		if rotationOnZAxis > 90:
-			rotationOnZAxis = 180 - rotationOnZAxis
+		if rotationOnZAxisAngle > 90:
+			rotationOnZAxis = 180 - rotationOnZ
 			coordinateForXAngleLessThanOrEqual_179(distance, rotationOnZAxis, rotationOnXAxis)
 		else:
 			coordinateForXAngleLessThanOrEqual_179(distance, rotationOnZAxis, rotationOnXAxis)
